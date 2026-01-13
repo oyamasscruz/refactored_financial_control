@@ -2,6 +2,7 @@ import { useState } from "react";
 import NewRelease from "./components/NewRelease";
 import ReleaseList from "./components/ReleaseList";
 import SelectedRelease from "./components/SelectedRelease";
+import Hero from "./components/Hero";
 
 function App() {
   const [releaseState, setReleaseState] = useState({
@@ -23,11 +24,13 @@ function App() {
       };
       return {
         ...prevState,
+        releaseStateId: undefined,
         releases: [...prevState.releases, newRelease],
       };
     });
   }
   console.log(releaseState.releases);
+  console.log(releaseState);
 
   function handleSelectRelease(id) {
     setReleaseState((prevState) => {
@@ -38,20 +41,35 @@ function App() {
     });
   }
 
+  function handleGoToreleases() {
+    setReleaseState((prevState) => {
+      return {
+        ...prevState,
+        releaseStateId: null,
+      };
+    });
+  }
+
   const selectedRelease = releaseState.releases.find(
     (release) => release.id === releaseState.releaseStateId
   );
 
-  return (
-    <>
-      <NewRelease newReleases={handleNewRelease} />
-      <ReleaseList
-        onSelect={handleSelectRelease}
-        releases={releaseState.releases}
-      />
-      <SelectedRelease releases={selectedRelease} />
-    </>
-  );
+  let content = <SelectedRelease releases={selectedRelease} />;
+
+  if (releaseState.releaseStateId === undefined) {
+    content = <Hero onAddNewReleases={handleGoToreleases} />;
+  } else if (releaseState.releaseStateId === null) {
+    content = (
+      <>
+        <ReleaseList
+          onSelect={handleSelectRelease}
+          releases={releaseState.releases}
+        />
+        <NewRelease newReleases={handleNewRelease} />
+      </>
+    );
+  }
+  return <>{content}</>;
 }
 
 export default App;
