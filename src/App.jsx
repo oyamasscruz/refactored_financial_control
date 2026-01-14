@@ -1,7 +1,6 @@
 import { useState } from "react";
 import NewRelease from "./components/NewRelease";
 import ReleaseList from "./components/ReleaseList";
-import SelectedRelease from "./components/SelectedRelease";
 import Hero from "./components/Hero";
 
 function App() {
