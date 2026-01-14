@@ -1,4 +1,4 @@
-export default function SelectedRelease({ releases }) {
+export default function SelectedRelease({ releases, onCancel }) {
   if (!releases) {
     return <h2>Adicione um lançamento</h2>;
   }
@@ -13,6 +13,7 @@ export default function SelectedRelease({ releases }) {
         <p>{releases.status}</p>
       </div>
       <button>Delete</button>
+      <button onClick={() => onCancel()}>cancel</button>
     </div>
   );
 }

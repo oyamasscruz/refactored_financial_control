@@ -24,7 +24,7 @@ function App() {
       };
       return {
         ...prevState,
-        releaseStateId: undefined,
+        releaseStateId: null,
         releases: [...prevState.releases, newRelease],
       };
     });
@@ -50,26 +50,40 @@ function App() {
     });
   }
 
+  function cancelSelectedRelease() {
+    setReleaseState((prevState) => {
+      return {
+        ...prevState,
+        releaseStateId: null,
+      };
+    });
+  }
+
   const selectedRelease = releaseState.releases.find(
     (release) => release.id === releaseState.releaseStateId
   );
 
-  let content = <SelectedRelease releases={selectedRelease} />;
+  let content = (
+    <SelectedRelease
+      releases={selectedRelease}
+      onCancel={cancelSelectedRelease}
+    />
+  );
 
   if (releaseState.releaseStateId === undefined) {
     content = <Hero onAddNewReleases={handleGoToreleases} />;
   } else if (releaseState.releaseStateId === null) {
     content = (
       <>
+        <NewRelease newReleases={handleNewRelease} />
         <ReleaseList
           onSelect={handleSelectRelease}
           releases={releaseState.releases}
         />
-        <NewRelease newReleases={handleNewRelease} />
       </>
     );
   }
-  return <>{content}</>;
+  return <main className="flex flex-col">{content}</main>;
 }
 
 export default App;

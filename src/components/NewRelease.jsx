@@ -64,7 +64,7 @@ export default function NewRelease({ newReleases }) {
   }
 
   return (
-    <div className="w-1/3">
+    <div className="w-1/3 bg-black text-white">
       <h2 className="uppercase">Your Releases</h2>
       <p>lets add some releases for control you finances</p>
       <p>Please insert</p>
