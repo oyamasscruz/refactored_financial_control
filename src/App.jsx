@@ -36,16 +36,7 @@ function App() {
     setReleaseState((prevState) => {
       return {
         ...prevState,
-        releaseStateId: id,
-      };
-    });
-  }
-
-  function handleGoToreleases() {
-    setReleaseState((prevState) => {
-      return {
-        ...prevState,
-        releaseStateId: null,
+        releaseStateId: prevState.releaseStateId === id ? null : id,
       };
     });
   }
@@ -59,26 +50,22 @@ function App() {
     });
   }
 
-  const selectedRelease = releaseState.releases.find(
-    (release) => release.id === releaseState.releaseStateId
-  );
+  // const selectedRelease = releaseState.releases.find(
+  //   (release) => release.id === releaseState.releaseStateId
+  // );
 
-  let content = (
-    <SelectedRelease
-      releases={selectedRelease}
-      onCancel={cancelSelectedRelease}
-    />
-  );
+  let content;
 
   if (releaseState.releaseStateId === undefined) {
-    content = <Hero onAddNewReleases={handleGoToreleases} />;
-  } else if (releaseState.releaseStateId === null) {
+    content = <Hero onAddNewReleases={cancelSelectedRelease} />;
+  } else {
     content = (
       <>
         <NewRelease newReleases={handleNewRelease} />
         <ReleaseList
           onSelect={handleSelectRelease}
           releases={releaseState.releases}
+          selectedId={releaseState.releaseStateId}
         />
       </>
     );

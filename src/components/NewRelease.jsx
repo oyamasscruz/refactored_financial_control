@@ -57,7 +57,7 @@ export default function NewRelease({ newReleases }) {
       date: dateRef.current.value,
       description: descriptionRef.current.value,
       status: statusRef.current.value,
-      categorie: categoryRef.current.value,
+      category: categoryRef.current.value,
       type: selectType,
     };
     newReleases(releaseData);
