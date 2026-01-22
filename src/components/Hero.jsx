@@ -41,7 +41,7 @@ export default function Hero({ onAddNewReleases }) {
       </div>
       <button
         onClick={onAddNewReleases}
-        className="py-2 px-4 bg-green-950 rounded-md text-amber-50"
+        className="mt-10 py-2 px-4 bg-azulMarinho rounded-md text-cinzaClaro hover:bg-azulMarinho/40 transition hover:text-azulMarinho cursor-pointer"
       >
         Criar Lançamentos
       </button>

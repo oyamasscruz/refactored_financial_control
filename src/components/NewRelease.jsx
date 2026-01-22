@@ -15,9 +15,12 @@ export default function NewRelease({ newReleases }) {
   let content;
   if (selectType === "custos") {
     content = (
-      <>
+      <div>
         <label>Custos</label>
-        <select ref={categoryRef}>
+        <select
+          className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+          ref={categoryRef}
+        >
           <option value="aluguel">Aluguel</option>
           <option value="condominio">Condomínio</option>
           <option value="energia">Energia</option>
@@ -33,20 +36,23 @@ export default function NewRelease({ newReleases }) {
           <option value="emprestimos">Empréstimos</option>
           <option value="outros">Outros</option>
         </select>
-      </>
+      </div>
     );
   } else if (selectType === "receitas") {
     content = (
-      <>
+      <div>
         <label>Receitas</label>
-        <select ref={categoryRef}>
+        <select
+          className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+          ref={categoryRef}
+        >
           <option value="salario">Salário</option>
           <option value="comissao">Comissão</option>
           <option value="freelance">Freelances</option>
           <option value="aluguel">Aluguel</option>
           <option value="outros">Outros</option>
         </select>
-      </>
+      </div>
     );
   }
 
@@ -64,40 +70,71 @@ export default function NewRelease({ newReleases }) {
   }
 
   return (
-    <div className="w-1/3 bg-black text-white">
-      <h2 className="uppercase">Your Releases</h2>
+    <div className="w-1/3 bg-perola text-gray-950">
+      <h2 className="uppercase text-2xl">Your Releases</h2>
       <p>lets add some releases for control you finances</p>
-      <p>Please insert</p>
-      <div className="flex flex-col">
-        <label>Valor</label>
-        <input ref={valueRef} type="number" />
-        <label>Data</label>
-        <input ref={dateRef} type="date" />
-        <label>Tipo</label>
-        <select value={selectType} onChange={handleSelectType}>
-          <option value="" disabled>
-            Selecione o Tipo de despesa
-          </option>
-          <option value="receitas">Receitas</option>
-          <option value="custos">Custos</option>
-        </select>
+      <p>Please insert data bellow</p>
+      <div className="flex justify-between ">
+        <div>
+          <label>Valor</label>
+          <input
+            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            ref={valueRef}
+            type="number"
+          />
+        </div>
+        <div>
+          <label>Data</label>
+          <input
+            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            ref={dateRef}
+            type="date"
+          />
+        </div>
+        <div>
+          <label>Tipo</label>
+          <select
+            value={selectType}
+            onChange={handleSelectType}
+            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+          >
+            <option value="" disabled>
+              Selecione o Tipo de despesa
+            </option>
+            <option value="receitas">Receitas</option>
+            <option value="custos">Custos</option>
+          </select>
+        </div>
         {content}
-        <label>Descrição</label>
-        <input ref={descriptionRef} type="text" />
-        <label>Status</label>
-        <select ref={statusRef}>
-          <option value="" disabled>
-            Selecione o status do lançamento
-          </option>
-          <option value="pago">Pago</option>
-          <option value="naoPago">Não Pago</option>
-        </select>
-        <button
-          className="bg-stone-400 rounded-md py-2 px-4 w-40 cursor-pointer hover:bg-stone-500"
-          onClick={handleSubmit}
-        >
-          Add+
-        </button>
+        <div>
+          <label>Descrição</label>
+          <input
+            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            ref={descriptionRef}
+            type="text"
+          />
+        </div>
+        <div>
+          <label>Status</label>
+          <select
+            ref={statusRef}
+            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+          >
+            <option value="" disabled>
+              Selecione o status do lançamento
+            </option>
+            <option value="pago">Pago</option>
+            <option value="naoPago">Não Pago</option>
+          </select>
+        </div>
+        <div>
+          <button
+            className="mt-10 bg-azulMarinho rounded-md py-2 px-4 w-40 cursor-pointer text-cinzaClaro hover:bg-azulMarinho/40 transition hover:text-azulMarinho font-bold"
+            onClick={handleSubmit}
+          >
+            Add +
+          </button>
+        </div>
       </div>
     </div>
   );
