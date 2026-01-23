@@ -3,7 +3,7 @@ export default function Header() {
     <header className="flex bg-azulMarinho px-10 py-15 justify-between">
       <div>
         <h1 className="text-cinzaClaro font-bold uppercase text-3xl">
-          Personal Finance
+          Controle Financeiro
         </h1>
       </div>
       <nav>

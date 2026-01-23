@@ -15,10 +15,10 @@ export default function NewRelease({ newReleases }) {
   let content;
   if (selectType === "custos") {
     content = (
-      <div>
+      <div className="flex flex-col gap-1">
         <label>Custos</label>
         <select
-          className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+          className="w-full border-azulMarinho border-2 rounded-md py-1 px-4"
           ref={categoryRef}
         >
           <option value="aluguel">Aluguel</option>
@@ -30,7 +30,7 @@ export default function NewRelease({ newReleases }) {
           <option value="supermercado">Supermercado</option>
           <option value="alimentação">Alimentação</option>
           <option value="combustivel">Combustível</option>
-          <option value="trasnporte">Transporte Público</option>
+          <option value="transporte">Transporte Público</option>
           <option value="educacao">Educação</option>
           <option value="lazer">Lazer</option>
           <option value="emprestimos">Empréstimos</option>
@@ -40,7 +40,7 @@ export default function NewRelease({ newReleases }) {
     );
   } else if (selectType === "receitas") {
     content = (
-      <div>
+      <div className="flex flex-col gap-1">
         <label>Receitas</label>
         <select
           className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
@@ -70,33 +70,33 @@ export default function NewRelease({ newReleases }) {
   }
 
   return (
-    <div className="w-1/3 bg-perola text-gray-950">
-      <h2 className="uppercase text-2xl">Your Releases</h2>
-      <p>lets add some releases for control you finances</p>
-      <p>Please insert data bellow</p>
-      <div className="flex justify-between ">
-        <div>
+    <div className="w-2/3 bg-perola text-gray-950">
+      <h2 className="uppercase text-2xl">Meus Lançamentos</h2>
+      <p>Vamos adicionar algumas despesas e receitas</p>
+      <p>Insira os dados abaixo</p>
+      <div className="grid grid-cols-3 gap-4 items-end">
+        <div className="flex flex-col gap-1">
           <label>Valor</label>
           <input
-            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            className="w-full border-azulMarinho border-2 rounded-md py-1 px-4"
             ref={valueRef}
             type="number"
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-1">
           <label>Data</label>
           <input
-            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            className="w-full border-azulMarinho border-2 rounded-md py-1 px-4"
             ref={dateRef}
             type="date"
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-1">
           <label>Tipo</label>
           <select
             value={selectType}
             onChange={handleSelectType}
-            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            className="w-full border-azulMarinho border-2 rounded-md py-1 px-4"
           >
             <option value="" disabled>
               Selecione o Tipo de despesa
@@ -106,19 +106,19 @@ export default function NewRelease({ newReleases }) {
           </select>
         </div>
         {content}
-        <div>
+        <div className="flex flex-col gap-1">
           <label>Descrição</label>
           <input
-            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            className="w-full border-azulMarinho border-2 rounded-md py-1 px-4"
             ref={descriptionRef}
             type="text"
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-1">
           <label>Status</label>
           <select
             ref={statusRef}
-            className="border-azulMarinho focus:bg-cinza/10 border-2 rounded-md py-1 px-4"
+            className="w-full border-azulMarinho border-2 rounded-md py-1 px-4"
           >
             <option value="" disabled>
               Selecione o status do lançamento

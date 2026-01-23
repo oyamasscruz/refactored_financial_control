@@ -121,7 +121,7 @@ function App() {
     );
   }
   return (
-    <div className="bg-perola h-screen w-screen">
+    <div className="bg-perola min-h-screen w-screen">
       <Header />
       <main className="flex flex-col mt-30 ml-20 ">{content}</main>
     </div>
